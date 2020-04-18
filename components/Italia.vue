@@ -1,8 +1,20 @@
 <template>
-  <div class="row">
-    <div class="col-12 p-1">
-      <div id="carouselItalia" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="carousel-inner w-75 m-auto" style="padding-bottom: 50px">
+  <div id="carouselItalia" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="row">
+      <div class="d-none d-md-flex col-md-1">
+        <a
+          class="carousel-control-prev carousel-arrow"
+          href="#carouselItalia"
+          role="button"
+          data-slide="prev"
+          id="carouselPrev"
+        >
+          <span class="fa fa-chevron-left text-info fa-2x" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </div>
+      <div class="col-12 col-md-10 p-1">
+        <div class="carousel-inner m-auto" style="padding-bottom: 50px">
           <div class="carousel-item active">
             <h5>{{titleId1}}</h5>
             <Chart :canvasId="canvasId1" :dataArray="canvasData1"></Chart>
@@ -20,20 +32,25 @@
             <Chart :canvasId="canvasId4" :dataArray="canvasData4"></Chart>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselItalia" role="button" data-slide="prev">
-          <span class="fa fa-chevron-left text-info fa-3x" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselItalia" role="button" data-slide="next">
-          <span class="fa fa-chevron-right text-info fa-3x" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-        <ol class="carousel-indicators">
+
+        <ol class="carousel-indicators d-none d-md-flex">
           <li data-target="#carouselItalia" data-slide-to="0" class="active bg-info"></li>
           <li data-target="#carouselItalia" data-slide-to="1" class="bg-info"></li>
           <li data-target="#carouselItalia" data-slide-to="2" class="bg-info"></li>
           <li data-target="#carouselItalia" data-slide-to="3" class="bg-info"></li>
         </ol>
+      </div>
+      <div class="d-none d-md-flex col-md-1">
+        <a
+          class="carousel-control-next carousel-arrow"
+          href="#carouselItalia"
+          role="button"
+          data-slide="next"
+          id="carouselNext"
+        >
+          <span class="fa fa-chevron-right text-info fa-2x" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
     </div>
   </div>
@@ -84,5 +101,21 @@ export default {
 <style>
 h5 {
   margin: 10px auto;
+}
+.carousel-arrow {
+  margin: auto 10px;
+}
+
+.carousel-item {
+  display: inline-block;
+  margin-right: 0px;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+  .carousel-item {
+    display: none;
+    margin-right: -100%;
+  }
 }
 </style>

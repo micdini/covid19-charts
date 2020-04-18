@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <canvas :id="canvasId" width="480" height="240"></canvas>
+  <div class="chart-container">
+    <canvas :id="canvasId" width="480" height="480"></canvas>
   </div>
 </template>
 
@@ -29,6 +29,27 @@ export default {
   },
   methods: {
     ...mapMutations(["notifyChartUpdated"]),
+    resizeChart: function() {
+      if (this.myChart === undefined) return;
+      //get size of div
+      var parent = $("#" + this.canvasId).parent();
+      var h = Math.max(
+        480,
+        Math.min(window.innerHeight * 0.7, parent.height())
+      );
+      var w = Math.max(480, parent.width());
+      parent.height(h);
+      //parent.width(w);
+      this.myChart.options.aspectRation = w / h;
+
+      console.log("parent" + h + " " + w);
+      console.log(
+        "canvas" +
+          $("#" + this.canvasId).height() +
+          " " +
+          $("#" + this.canvasId).width()
+      );
+    },
     refreshChart: function() {
       //destroy chart if already exists
       if (this.myChart !== undefined) {
@@ -60,6 +81,9 @@ export default {
           datasets: ds
         },
         options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          onResize: this.resizeChart,
           scales: {
             xAxes: [
               {
@@ -88,6 +112,7 @@ export default {
           }
         }
       });
+      this.resizeChart();
     }
   },
   computed: {

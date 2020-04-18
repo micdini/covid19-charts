@@ -72,30 +72,32 @@ button {
   padding: 3px 10px;
 }
 
-#accordionProvince {
-  max-height: calc(100vh - 80px);
-  overflow: scroll;
-  overflow-x: hidden;
-}
+@media (min-width: 768px) {
+  #accordionProvince {
+    max-height: calc(100vh - 80px);
+    overflow: scroll;
+    overflow-x: hidden;
+  }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 2px grey;
-  border-radius: 4px;
-}
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+    border-radius: 4px;
+  }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: teal;
-  border-radius: 10px;
-}
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: teal;
+    border-radius: 10px;
+  }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: turquoise;
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: turquoise;
+  }
 }
 </style>

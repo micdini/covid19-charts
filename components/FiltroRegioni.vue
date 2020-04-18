@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div v-for="cat in serie" v-bind:key="cat.id" v-bind:elem="cat">
+    <div v-for="cat in serie" v-bind:key="cat.id" v-bind:elem="cat" class="cont-regione">
       <button
         v-if="cat.codice > 0"
         type="button"
-        class="btn btn-outline-info btn-sm btn-block"
+        class="btn btn-outline-info btn-sm"
         data-toggle="button"
         @click="toggleRegioneInt(cat.codice)"
         aria-pressed="false"
@@ -40,5 +40,22 @@ export default {
 <style scoped>
 button {
   margin: 2px;
+}
+
+.cont-regione > button.btn {
+  display: inline;
+}
+.cont-regione {
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  .cont-regione > button.btn {
+    display: block;
+    width: 100%;
+  }
+  .cont-regione {
+    display: block;
+  }
 }
 </style>
