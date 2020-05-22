@@ -30,7 +30,7 @@ function download(what) {
             var json = JSON.parse(data);
             store.commit('setData', { id: what, raw: json });
         } catch (ex) {
-            console.warn('Error parsing json data from repository');
+            console.warn('Error parsing json data from repository ' + what + ': ' + ex);
         }
     });
 }

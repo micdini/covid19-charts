@@ -94,69 +94,72 @@ function Provincia(code) {
 
 function addElement(id, d, element, list, sublist) {
     var date = Date.parse(element['data']);
-    if (id === 'italia') {
-        d = d.serie;
-        _addElement(d['casi'], date, element['totale_casi']);
-        _addElement(d['positivi'], date, element['totale_positivi']);
-        _addElement(d['guariti'], date, element['dimessi_guariti']);
-        _addElement(d['decessi'], date, element['deceduti']);
-        _addElement(d['ricoverati'], date, element['ricoverati_con_sintomi']);
-        _addElement(d['ricoveratiICU'], date, element['terapia_intensiva']);
-        _addElement(d['tamponi'], date, element['tamponi']);
-    }
 
-    if (id === 'regioni') {
-        var codice = parseInt('' + element['codice_regione']);
-        var f = d.serie[codice];
-        f.name = element['denominazione_regione'];
-        _addElement(f['casi'], date, element['totale_casi']);
-        //_addElement(f['positivi'], date, element['totale_attualmente_positivi']);
-        //_addElement(f['guariti'], date, element['dimessi_guariti']);
-        //_addElement(f['decessi'], date, element['deceduti']);
-        //_addElement(f['ricoverati'], date, element['ricoverati_con_sintomi']);
-        //_addElement(f['ricoveratiICU'], date, element['terapia_intensiva']);
-        //_addElement(f['tamponi'], date, element['tamponi']);
+    switch (id) {
+        case 'italia':
+            d = d.serie;
+            _addElement(d['casi'], date, element['totale_casi']);
+            _addElement(d['positivi'], date, element['totale_positivi']);
+            _addElement(d['guariti'], date, element['dimessi_guariti']);
+            _addElement(d['decessi'], date, element['deceduti']);
+            _addElement(d['ricoverati'], date, element['ricoverati_con_sintomi']);
+            _addElement(d['ricoveratiICU'], date, element['terapia_intensiva']);
+            _addElement(d['tamponi'], date, element['tamponi']);
+            break;
+        case 'regioni':
+            var codice = parseInt('' + element['codice_regione']);
+            var f = d.serie[codice];
+            f.name = element['denominazione_regione'];
+            _addElement(f['casi'], date, element['totale_casi']);
+            //_addElement(f['positivi'], date, element['totale_attualmente_positivi']);
+            //_addElement(f['guariti'], date, element['dimessi_guariti']);
+            //_addElement(f['decessi'], date, element['deceduti']);
+            //_addElement(f['ricoverati'], date, element['ricoverati_con_sintomi']);
+            //_addElement(f['ricoveratiICU'], date, element['terapia_intensiva']);
+            //_addElement(f['tamponi'], date, element['tamponi']);
 
-        f['casi'].label = element['denominazione_regione'] + ' (totale, sx)';
-        f['nuoviCasi'].label = element['denominazione_regione'] + ' (nuovi, dx)';
-        f['casi'].borderColor = colors[codice];
-        f['casi'].backgroundColor = colors[codice];
-        f['nuoviCasi'].borderColor = colors[codice];
-        f['nuoviCasi'].backgroundColor = colors[codice];
-    }
-
-    if (id === 'province') {
-        //get region code
-        var codice = parseInt('' + element['codice_regione']);
-        var f = d.serie[codice];
-        f.name = element['denominazione_regione'];
-        var codiceProv = parseInt('' + element['codice_provincia']);
-        var provincia = 'prov' + codiceProv;   //as string
-        var found = false;
-        var index = -1;
-        for (var i = 0; i < f.province.length; i++) {
-            if (f.province[i].codice === codiceProv) {
-                index = i;
-                found = true;
+            f['casi'].label = element['denominazione_regione'] + ' (totale, sx)';
+            f['nuoviCasi'].label = element['denominazione_regione'] + ' (nuovi, dx)';
+            f['casi'].borderColor = colors[codice];
+            f['casi'].backgroundColor = colors[codice];
+            f['nuoviCasi'].borderColor = colors[codice];
+            f['nuoviCasi'].backgroundColor = colors[codice];
+            break;
+        case 'province':
+            //get region code
+            var codice = parseInt('' + element['codice_regione']);
+            var f = d.serie[codice];
+            f.name = element['denominazione_regione'];
+            var codiceProv = parseInt('' + element['codice_provincia']);
+            var provincia = 'prov' + codiceProv;   //as string
+            var found = false;
+            var index = -1;
+            for (var i = 0; i < f.province.length; i++) {
+                if (f.province[i].codice === codiceProv) {
+                    index = i;
+                    found = true;
+                }
             }
-        }
-        if (!found) {
-            f.province.push(new Provincia(codiceProv));
-            index = f.province.length - 1;
-        }
+            if (!found) {
+                f.province.push(new Provincia(codiceProv));
+                index = f.province.length - 1;
+            }
 
-        var p = f.province[index];
-        p.name = element['denominazione_provincia'];
+            var p = f.province[index];
+            p.name = element['denominazione_provincia'];
 
-        var colore = Math.round(Math.random() * (colors.length - 1));
+            var colore = Math.round(Math.random() * (colors.length - 1));
 
-        _addElement(p['casi'], date, element['totale_casi']);
-        p['casi'].label = element['denominazione_provincia'] + ' (totale, sx)';
-        p['nuoviCasi'].label = element['denominazione_provincia'] + ' (nuovi, dx)';
-        p['casi'].borderColor = colors[colore];
-        p['casi'].backgroundColor = colors[colore];
-        p['nuoviCasi'].borderColor = colors[colore];
-        p['nuoviCasi'].backgroundColor = colors[colore];
+            _addElement(p['casi'], date, element['totale_casi']);
+            p['casi'].label = element['denominazione_provincia'] + ' (totale, sx)';
+            p['nuoviCasi'].label = element['denominazione_provincia'] + ' (nuovi, dx)';
+            p['casi'].borderColor = colors[colore];
+            p['casi'].backgroundColor = colors[colore];
+            p['nuoviCasi'].borderColor = colors[colore];
+            p['nuoviCasi'].backgroundColor = colors[colore];
+            break;
+        default:
+            console.warn('should not be here');
     }
 
 }

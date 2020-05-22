@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div v-for="cat in serie" v-bind:key="cat.id" v-bind:elem="cat" class="cont-regione">
+    <div
+      v-for="cat in serie"
+      v-bind:key="cat.id"
+      v-bind:elem="cat"
+      :class="(cat.name === 'unset' ? 'd-none' : 'cont-regione')"
+    >
       <button
         v-if="cat.codice > 0"
         type="button"

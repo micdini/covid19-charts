@@ -15,7 +15,7 @@ function makeItalia() {
 }
 function makeRegioni() {
     var reg = [];
-    for (var i = 0; i < 21; i++) {
+    for (var i = 0; i < 23; i++) {
         reg.push(new Dataset.Regione(i));
     }
     return {
@@ -25,7 +25,7 @@ function makeRegioni() {
 
 function makeProvince() {
     var prov = [];
-    for (var i = 0; i < 21; i++) {
+    for (var i = 0; i < 23; i++) {
         prov.push(new Dataset.RegioneProvince(i));
     }
     return {

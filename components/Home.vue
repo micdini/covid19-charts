@@ -42,6 +42,39 @@
             </button>
           </div>
         </div>
+        <hr class="my-4" />
+        <div class="row">
+          <div class="col-12">
+            <h6>
+              Changelog
+              <small>
+                <a
+                  class="text-info"
+                  data-toggle="collapse"
+                  href="#collapseChangelog"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseChangelog"
+                >
+                  <i class="fa fa-plus"></i>
+                </a>
+              </small>
+            </h6>
+
+            <div class="collapse" id="collapseChangelog">
+              <div>
+                <p>
+                  22/05/2020 -
+                  <i>Versione 0.10.0</i>
+                </p>
+                <ul>
+                  <li>Aggiornato formato dati per rispecchiare modifiche repository (P.A. Trento e P.A. Bolzano)</li>
+                  <li>Rimozione output di debug su console, aggiunti messaggi sper eccezioni</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="home-footer">

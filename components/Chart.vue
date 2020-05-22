@@ -41,14 +41,6 @@ export default {
       parent.height(h);
       //parent.width(w);
       this.myChart.options.aspectRation = w / h;
-
-      console.log("parent" + h + " " + w);
-      console.log(
-        "canvas" +
-          $("#" + this.canvasId).height() +
-          " " +
-          $("#" + this.canvasId).width()
-      );
     },
     refreshChart: function() {
       //destroy chart if already exists

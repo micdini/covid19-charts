@@ -2,7 +2,7 @@
   <div id="accordionProvince">
     <button type="button" @click="clearProvince" class="btn btn-secondary btn-block btn-sm">Pulisci</button>
     <div class="card" v-for="cat in serie" v-bind:key="cat.id" v-bind:elem="cat">
-      <div v-if="cat.codice > 0">
+      <div v-if="cat.codice > 0 && cat.name !=='unset'">
         <div class="card-header">
           <span class="badge badge-info">{{cat.province.length}}</span>
           <a
