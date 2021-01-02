@@ -6,16 +6,16 @@ Esempio visualizzabile su http://micheledini.com/covid19
 
 ### Run
 
-Lanciare parcel per webserver sviluppo (http://localhost:1234)
+Lanciare parcel per webserver sviluppo, accessibile via http://localhost:1234 (configurazione in package.json)
 
 ~~~
-parcel run index.html
+npm run start
 ~~~
 
 ### Build
 
-Lanciare parcel per generazione file distribuzione
+Lanciare parcel per generazione file distribuzione (prima esegue il clean della cartella dist)
 
 ~~~
-parcel build .\index.html --no-source-maps --public-url ./
+npm run build
 ~~~
