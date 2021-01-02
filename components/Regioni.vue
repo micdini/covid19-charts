@@ -3,7 +3,7 @@
     <div class="col-12 col-md-9 col-lg-10 p-1">
       <div class="w-100 m-auto p-1">
         <div class="alert alert-info" v-if=" getNumberOfRegions < 1 ">
-          <i class="fa fa-info-circle"></i> Selezione almeno una regione nel menu a sinistra.
+          <i class="fa fa-info-circle"></i> Selezione almeno una regione nel menu a destra.
         </div>
         <Chart :canvasId="canvasId1" :dataArray="canvasData1" ref="chart1"></Chart>
       </div>

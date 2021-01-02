@@ -16,20 +16,16 @@
       <div class="col-12 col-md-10 p-1">
         <div class="carousel-inner m-auto" style="padding-bottom: 50px">
           <div class="carousel-item active">
-            <h5>{{titleId1}}</h5>
-            <Chart :canvasId="canvasId1" :dataArray="canvasData1"></Chart>
+            <Chart :chartTitle="titleId1" :canvasId="canvasId1" :dataArray="canvasData1"></Chart>
           </div>
           <div class="carousel-item">
-            <h5>{{titleId2}}</h5>
-            <Chart :canvasId="canvasId2" :dataArray="canvasData2"></Chart>
+            <Chart :chartTitle="titleId2" :canvasId="canvasId2" :dataArray="canvasData2"></Chart>
           </div>
           <div class="carousel-item">
-            <h5>{{titleId3}}</h5>
-            <Chart :canvasId="canvasId3" :dataArray="canvasData3"></Chart>
+            <Chart :chartTitle="titleId3" :canvasId="canvasId3" :dataArray="canvasData3"></Chart>
           </div>
           <div class="carousel-item">
-            <h5>{{titleId4}}</h5>
-            <Chart :canvasId="canvasId4" :dataArray="canvasData4"></Chart>
+            <Chart :chartTitle="titleId4" :canvasId="canvasId4" :dataArray="canvasData4"></Chart>
           </div>
         </div>
 

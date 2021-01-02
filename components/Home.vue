@@ -2,47 +2,53 @@
   <div>
     <div class="m-2">
       <div class="jumbotron">
-        <h1>
-          <span class="display-4">COVID-19</span>
-          <br />
-          <small>Visualizzatore dati epidemia in Italia</small>
-        </h1>
-        <p
-          class="lead"
-        >Semplice visualizzatore per i dati (a livello nazionale, regionale e provinciale) forniti dalla Protezione Civile.</p>
-        <hr class="my-4" />
-        <p>I dati utilizzati sono aggiornati quotidianamente e sono disponibili liberamente sul repository GitHub.</p>
+        <div>
+          <span class="display-4">COVID-19: dati epidemia in Italia</span>
+        </div>
         <p class="lead">
-          <a class="btn btn-dark" href="https://github.com/pcm-dpc/COVID-19" role="button">
-            Visita GitHub Repository
-            <i class="fab fa-github"></i>
-          </a>
-        </p>
+          Semplice visualizzatore per i dati (a livello nazionale, regionale e provinciale) forniti dalla Protezione Civile.</p>
+        
         <hr class="my-4" />
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-4 p-top">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 p-top">
+            <button class="btn btn-info btn-block" @click="showPage('report')">
+              <i class="fas fa-file-alt"></i> Sintesi dati
+              <br />
+              <small>Visualizza sintesi nazionale</small>
+            </button>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 p-top">
             <button class="btn btn-info btn-block" @click="showPage('italia')">
               <i class="fa fa-chart-line"></i> Grafici Italia
               <br />
-              <small>Visualizza dati a livello nazionale</small>
+              <small>Visualizza dati nazionali</small>
             </button>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-4 p-top">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 p-top">
             <button class="btn btn-info btn-block p-1" @click="showPage('regioni')">
               <i class="fa fa-chart-line"></i> Grafici regioni
               <br />
-              <small>Visualizza dati a livello regionale</small>
+              <small>Visualizza dati regionali</small>
             </button>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-4 p-top">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 p-top">
             <button class="btn btn-info btn-block p-1" @click="showPage('province')">
               <i class="fa fa-chart-line"></i> Grafici province
               <br />
-              <small>Visualizza dati a livello provinciale</small>
+              <small>Visualizza dati provinciali</small>
             </button>
           </div>
         </div>
         <hr class="my-4" />
+        <div class="row">
+          <div class="col-12 col-md-8 col-lg-9 col-xl-9">I dati utilizzati sono aggiornati quotidianamente e sono disponibili liberamente sul repository GitHub.</div>
+          <div class="col-12 col-md-4 col-lg-3 col-xl-3"><a class="btn btn-block btn-dark" href="https://github.com/pcm-dpc/COVID-19" role="button">
+            Visita GitHub Repository
+            <i class="fab fa-github"></i>
+          </a></div>
+        </div>
+
+        <hr>
         <div class="row">
           <div class="col-12">
             <h6>
@@ -62,6 +68,17 @@
             </h6>
 
             <div class="collapse" id="collapseChangelog">
+              <div>
+                <p>
+                  02/01/2021 -
+                  <i>Versione 0.11.0</i>
+                </p>
+                <ul>
+                  <li>Aggiunta pagina con sintesi dati nazionali e prvincia di Rimini</li>
+                  <li>Aggiunto filtro per restringere intervallo temporale nei grafici</li>
+                  <li>Aggiunta scala logaritmica per asse sinistro grafici</li>
+                </ul>
+              </div>
               <div>
                 <p>
                   22/05/2020 -
@@ -107,5 +124,9 @@ export default {
 <style>
 .p-top {
   padding-top: 10px;
+}
+
+button {
+  height: 100%;
 }
 </style>

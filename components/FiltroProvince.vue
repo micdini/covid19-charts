@@ -20,6 +20,7 @@
                 class="btn btn-outline-info btn-sm btn-block"
                 data-toggle="button"
                 @click="toggleProvinciaInt(cat.codice, prov.codice)"
+                onclick="this.blur();"
                 aria-pressed="false"
                 autocomplete="off"
                 role="button"

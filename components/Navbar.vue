@@ -21,9 +21,14 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item" :class=" (getPage === 'home' ? 'active' : '') ">
+        <li class="nav-item" :class=" (getPage === 'home' ? 'active' : '') ">
             <a class="nav-link" @click="showPage('home')" href="#">
               <i class="fa fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item" :class=" (getPage === 'report' ? 'active' : '') ">
+            <a class="nav-link" @click="showPage('report')" href="#">
+              <i class="fas fa-file-alt"></i> Sintesi
             </a>
           </li>
           <li class="nav-item" :class=" (getPage === 'italia' ? 'active' : '') ">

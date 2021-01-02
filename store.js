@@ -10,16 +10,19 @@ Vue.use(Vuex);
 
 function makeItalia() {
     return {
-        ...Dataset.emptyObj, serie: new Dataset.Italia()
+        ...Dataset.emptyObj,
+        serie: new Dataset.Italia()
     };
 }
+
 function makeRegioni() {
     var reg = [];
     for (var i = 0; i < 23; i++) {
         reg.push(new Dataset.Regione(i));
     }
     return {
-        ...Dataset.emptyObj, serie: reg
+        ...Dataset.emptyObj,
+        serie: reg
     }
 }
 
@@ -29,7 +32,8 @@ function makeProvince() {
         prov.push(new Dataset.RegioneProvince(i));
     }
     return {
-        ...Dataset.emptyObj, serie: prov
+        ...Dataset.emptyObj,
+        serie: prov
     }
 }
 
@@ -42,9 +46,17 @@ export default new Vuex.Store({
             'home': Dataset.emptyObj
         },
         active: "home",
-        updateChart: false
+        updateChart: false,
+        downloading: {
+            state: true,
+            'italia': 0,
+            'regioni': 0,
+            'province': 0
+        }
     },
     getters: {
+        isDownloading: state => { return state.downloading.state; },
+        downloadProgress: state => { return state.downloading; },
         getPage: state => { return state.active; },
         serie: state => { return state.repo[state.active].serie; },
         serieData: state => {
@@ -66,7 +78,7 @@ export default new Vuex.Store({
         getNumberOfRegions: state => {
             var count = 0;
             try {
-                $.each(state.repo.regioni.serie, function (i, e) {
+                $.each(state.repo.regioni.serie, function(i, e) {
                     if (e.show)
                         count++;
                 });
@@ -78,8 +90,8 @@ export default new Vuex.Store({
         getNumberOfProvince: state => {
             var count = 0;
             try {
-                $.each(state.repo.province.serie, function (i, e) {
-                    $.each(e.province, function (j, f) {
+                $.each(state.repo.province.serie, function(i, e) {
+                    $.each(e.province, function(j, f) {
                         if (f.show)
                             count++;
                     });
@@ -103,6 +115,8 @@ export default new Vuex.Store({
                 case "province":
                     target = "province"
                     break;
+                case "report":
+                    target = "report";
                 case "home":
                 default:
             }
@@ -115,6 +129,17 @@ export default new Vuex.Store({
         },
         notifyChartUpdated(state) {
             Vue.set(state, 'updateChart', false);
+        },
+        notifyDownloadProgress(state, payload) {
+            payload.what = payload.what || '';
+            payload.value = payload.value || 0;
+            payload.value = Math.floor(payload.value * 100);
+            Vue.set(state.downloading, payload.what, payload.value);
+            if (payload.bytes > 0)
+                Vue.set(state.downloading, (payload.what + "kb"), Math.floor(payload.bytes / 1024));
+        },
+        notifyDownloadFinished(state) {
+            Vue.set(state.downloading, 'state', false);
         },
         toggleProvincia(state, arg) {
             if (arg !== undefined) {

@@ -12,6 +12,7 @@
         class="btn btn-outline-info btn-sm"
         data-toggle="button"
         @click="toggleRegioneInt(cat.codice)"
+        onclick="this.blur();"
         aria-pressed="false"
         autocomplete="off"
         role="button"
