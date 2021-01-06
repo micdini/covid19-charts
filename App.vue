@@ -78,7 +78,7 @@ export default {
       version: version,
       progressbarItems: [
         { name: "Italia", key: "italia", id: 0},
-        { name: "Regioni", key: "province", id: 1},
+        { name: "Regioni", key: "regioni", id: 1},
         { name: "Province", key: "province", id: 2 },
       ],
     };
