@@ -68,6 +68,15 @@
             </h6>
 
             <div class="collapse" id="collapseChangelog">
+               <div>
+                <p>
+                  09/01/2021 -
+                  <i>Versione 0.11.2</i>
+                </p>
+                <ul>
+                  <li>Risolto ricaricamento della pagina al cambio di scala dei grafici (lin-log)</li>
+                </ul>
+              </div>
               <div>
                 <p>
                   02/01/2021 -

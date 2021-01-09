@@ -84,7 +84,7 @@ export default {
     };
   },
   created: function () {
-    console.log("Downloading: " + this.isDownloading);
+    //console.log("Downloading: " + this.isDownloading);
   },
   computed: {
     ...mapGetters(["getPage", "isDownloading", "downloadProgress"]),

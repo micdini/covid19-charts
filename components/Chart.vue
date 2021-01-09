@@ -72,7 +72,13 @@ export default {
     toggleLogAxis: function () {
       //toggle log axis flag and refresh
       this.logAxis = !this.logAxis;
-      this.refreshChart();
+      this.myChart.options.scales.yAxes[0] = {
+         id: "sx",
+         type: this.logAxis ? "logarithmic" : "linear",
+         position: "left",
+         ticks: { beginAtZero: true},
+      };
+      this.myChart.update()
     },
     resizeChart: function () {
       if (this.myChart === undefined) return;
@@ -159,7 +165,7 @@ export default {
                 id: "sx",
                 type: this.logAxis ? "logarithmic" : "linear",
                 position: "left",
-                ticks: { beginAtZero: true },
+                ticks: { beginAtZero: true},
               },
               {
                 //right axis (for increments)
